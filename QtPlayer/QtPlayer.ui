@@ -1,10 +1,8 @@
-<UI version="4.0" >
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
  <class>QtPlayerClass</class>
- <widget class="QWidget" name="QtPlayerClass" >
-  <property name="objectName" >
-   <string notr="true">QtPlayerClass</string>
-  </property>
-  <property name="geometry" >
+ <widget class="QWidget" name="QtPlayerClass">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
@@ -12,14 +10,23 @@
     <height>400</height>
    </rect>
   </property>
-  <property name="windowTitle" >
+  <property name="windowTitle">
    <string>QtPlayer</string>
   </property>
+  <widget class="QOpenGLWidget" name="videoWidget">
+   <property name="geometry">
+    <rect>
+     <x>-10</x>
+     <y>0</y>
+     <width>300</width>
+     <height>200</height>
+    </rect>
+   </property>
+  </widget>
  </widget>
- <layoutDefault spacing="6" margin="11" />
- <pixmapfunction></pixmapfunction>
+ <layoutdefault spacing="6" margin="11"/>
  <resources>
-   <include location="QtPlayer.qrc"/>
+  <include location="QtPlayer.qrc"/>
  </resources>
  <connections/>
-</UI>
+</ui>
