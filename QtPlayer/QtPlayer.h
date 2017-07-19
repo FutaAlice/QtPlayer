@@ -16,4 +16,5 @@ private:
     Ui::QtPlayerClass ui;
 
     libvlc_media_player_t *vlcPlayer;
+    libvlc_media_player_t *vlcPlayer2;
 };

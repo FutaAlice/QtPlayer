@@ -23,6 +23,16 @@
     </rect>
    </property>
   </widget>
+  <widget class="QOpenGLWidget" name="videoWidget2">
+   <property name="geometry">
+    <rect>
+     <x>300</x>
+     <y>200</y>
+     <width>300</width>
+     <height>200</height>
+    </rect>
+   </property>
+  </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>
