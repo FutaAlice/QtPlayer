@@ -21,37 +21,15 @@ QtPlayer::QtPlayer(QWidget *parent)
 {
     ui.setupUi(this);
 
-    /* The basic file-select box */
-    QString fileOpen("test.mp4");
+    auto player = new VlcMediaPlayer(ui.videoWidget);
+    player->Open("test.hevc");
 
-    libvlc_instance_t *vlcInstance = libvlc_new(0, NULL);
+    //player->Open("test.mp4");
 
-    auto *vlcMedia = libvlc_media_new_path(vlcInstance,
-                                           qtu(fileOpen));
+    //auto player2 = new VlcMediaPlayer(ui.videoWidget2);
+    //player2->Open("test.hevc");
 
-    /* Create a new libvlc player */
-    vlcPlayer = libvlc_media_player_new_from_media(vlcMedia);
-
-    /* Release the media */
-    libvlc_media_release(vlcMedia);
-
-
-
-    /* Integrate the video in the interface */
-    #if defined(Q_OS_MAC)
-        libvlc_media_player_set_nsobject(vlcPlayer, (void *)ui.videoWidget->winId());
-    #elif defined(Q_OS_UNIX)
-        libvlc_media_player_set_xwindow(vlcPlayer, ui.videoWidget->winId());
-    #elif defined(Q_OS_WIN)
-        libvlc_media_player_set_hwnd(vlcPlayer, (void*)ui.videoWidget->winId());
-    #endif
-
-    /* And start playback */
-    libvlc_media_player_play(vlcPlayer);
-
-    auto player = new VlcMediaPlayer(ui.videoWidget2);
-    player->Open("1.mp4");
-    Sleep(1000);
-    player->Pause();
+    //Sleep(1000);
+    //player->Pause();
 
 }

@@ -17,20 +17,38 @@ extern "C" {
 #endif
 
 
+
+unsigned int VlcMediaPlayer::s_ref = 0;
+libvlc_instance_t *VlcMediaPlayer::s_pVlcInstance = NULL;
+
 VlcMediaPlayer::VlcMediaPlayer(QWidget* pWidget)
     : IMediaPlayer(pWidget)
     , m_pVlcPlayer(NULL)
 {
+    /* Initialize libVLC */
+    if (0 == s_ref)
+    {
+        s_pVlcInstance = libvlc_new(0, NULL);
+        if (NULL == s_pVlcInstance)
+        {
+            assert(false);
+        }
+    }
+    ++s_ref;
 }
 
 
 VlcMediaPlayer::~VlcMediaPlayer()
 {
+    --s_ref;
+    if (0 == s_ref)
+    {
+        libvlc_release(s_pVlcInstance);
+    }
 }
 
 bool VlcMediaPlayer::Open(const char *url)
 {
-
     /* Stop if something is playing */
     if (m_pVlcPlayer &&
         libvlc_media_player_is_playing(m_pVlcPlayer))
@@ -38,15 +56,8 @@ bool VlcMediaPlayer::Open(const char *url)
         Stop();
     }
 
-    /* Initialize libVLC */
-    libvlc_instance_t *vlcInstance = libvlc_new(0, NULL);
-    if (NULL == vlcInstance)
-    {
-        assert(false);
-    }
-
     /* Create a new Media */
-    libvlc_media_t *vlcMedia = libvlc_media_new_path(vlcInstance,
+    libvlc_media_t *vlcMedia = libvlc_media_new_path(s_pVlcInstance,
                                                      url);
     /* Fail to open */
     if (!vlcMedia)
@@ -54,6 +65,11 @@ bool VlcMediaPlayer::Open(const char *url)
         return false;
     }
 
+    /*::avformat-format=hevc*/
+    libvlc_media_add_option(vlcMedia, ":avcodec-options{flags=low_delay}");
+    libvlc_media_add_option(vlcMedia, ":demux=hevc");
+    //libvlc_media_add_option(vlcMedia, ":sout-ts-dts-delay=0");
+    
     /* Create a new libvlc player */
     m_pVlcPlayer = libvlc_media_player_new_from_media(vlcMedia);
 
@@ -100,5 +116,13 @@ void VlcMediaPlayer::Stop()
 
         /* Reset application values */
         m_pVlcPlayer = NULL;
+    }
+}
+
+void VlcMediaPlayer::ChangeVolume(int vol)
+{
+    if (m_pVlcPlayer)
+    {
+        libvlc_audio_set_volume(m_pVlcPlayer, vol);
     }
 }
