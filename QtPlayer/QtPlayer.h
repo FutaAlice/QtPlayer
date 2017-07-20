@@ -1,7 +1,6 @@
 #pragma once
 
 #include <QtWidgets/QWidget>
-#include <map>
 #include "ui_QtPlayer.h"
 
 struct libvlc_media_player_t;
@@ -16,5 +15,4 @@ private:
     Ui::QtPlayerClass ui;
 
     libvlc_media_player_t *vlcPlayer;
-    libvlc_media_player_t *vlcPlayer2;
 };

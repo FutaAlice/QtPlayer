@@ -15,7 +15,7 @@ public:
     virtual void Pause() = 0;
     virtual void Stop() = 0;
 
-private:
+protected:
     QWidget* m_pWidget;
 
 };

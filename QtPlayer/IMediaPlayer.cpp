@@ -1,7 +1,7 @@
 #include "IMediaPlayer.h"
 
-#include <qwidget.h>
-#include <qfiledialog.h>
+#include <QtWidgets/QWidget>
+#include <QtWidgets/qfiledialog.h>
 
 
 IMediaPlayer::IMediaPlayer(QWidget* pWidget)

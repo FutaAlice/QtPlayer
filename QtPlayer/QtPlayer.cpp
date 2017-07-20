@@ -1,4 +1,5 @@
 #include "QtPlayer.h"
+#include "VlcMediaPlayer.h"
 
 # ifdef __cplusplus
 extern "C" {
@@ -36,14 +37,6 @@ QtPlayer::QtPlayer(QWidget *parent)
 
 
 
-    //libvlc_instance_t *vlcInstance2 = libvlc_new(0, NULL);
-    fileOpen = "1.mp4";
-    auto *vlcMedia2 = libvlc_media_new_path(vlcInstance,
-                                            qtu(fileOpen));
-    vlcPlayer2 = libvlc_media_player_new_from_media(vlcMedia2);
-    libvlc_media_release(vlcMedia2);
-
-
     /* Integrate the video in the interface */
     #if defined(Q_OS_MAC)
         libvlc_media_player_set_nsobject(vlcPlayer, (void *)ui.videoWidget->winId());
@@ -51,11 +44,14 @@ QtPlayer::QtPlayer(QWidget *parent)
         libvlc_media_player_set_xwindow(vlcPlayer, ui.videoWidget->winId());
     #elif defined(Q_OS_WIN)
         libvlc_media_player_set_hwnd(vlcPlayer, (void*)ui.videoWidget->winId());
-        libvlc_media_player_set_hwnd(vlcPlayer2, (void*)ui.videoWidget2->winId());
     #endif
 
     /* And start playback */
     libvlc_media_player_play(vlcPlayer);
-    libvlc_media_player_play(vlcPlayer2);
+
+    auto player = new VlcMediaPlayer(ui.videoWidget2);
+    player->Open("1.mp4");
+    Sleep(1000);
+    player->Pause();
 
 }

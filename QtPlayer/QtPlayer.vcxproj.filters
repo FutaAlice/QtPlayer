@@ -58,6 +58,9 @@
     <ClCompile Include="IMediaPlayer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="VlcMediaPlayer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="QtPlayer.h">
@@ -75,6 +78,9 @@
       <Filter>Generated Files</Filter>
     </ClInclude>
     <ClInclude Include="IMediaPlayer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="VlcMediaPlayer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

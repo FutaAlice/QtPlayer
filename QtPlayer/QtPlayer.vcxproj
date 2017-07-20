@@ -84,6 +84,7 @@
     <ClCompile Include="IMediaPlayer.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="QtPlayer.cpp" />
+    <ClCompile Include="VlcMediaPlayer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="QtPlayer.h">
@@ -112,6 +113,7 @@
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_QtPlayer.h" />
     <ClInclude Include="IMediaPlayer.h" />
+    <ClInclude Include="VlcMediaPlayer.h" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="QtPlayer.qrc">
