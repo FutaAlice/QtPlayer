@@ -55,6 +55,9 @@
     <ClCompile Include="GeneratedFiles\qrc_QtPlayer.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
+    <ClCompile Include="IMediaPlayer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="QtPlayer.h">
@@ -70,6 +73,9 @@
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_QtPlayer.h">
       <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IMediaPlayer.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
