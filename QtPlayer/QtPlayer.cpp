@@ -1,19 +1,19 @@
 #include "QtPlayer.h"
 #include "VlcMediaPlayer.h"
 
-# ifdef __cplusplus
-extern "C" {
-# endif
-#include <vlc/vlc.h>
-# ifdef __cplusplus
-}
-# endif
-
-#ifdef WIN32    // Windows
-#pragma comment(lib, "libvlc.lib")
-#else           // Linux
-#pragma comment(lib, "libvlc.a")
-#endif
+//# ifdef __cplusplus
+//extern "C" {
+//# endif
+//#include <vlc/vlc.h>
+//# ifdef __cplusplus
+//}
+//# endif
+//
+//#ifdef WIN32    // Windows
+//#pragma comment(lib, "libvlc.lib")
+//#else           // Linux
+//#pragma comment(lib, "libvlc.a")
+//#endif
 
 #define qtu( i ) ((i).toUtf8().constData())
 QtPlayer::QtPlayer(QWidget *parent)
@@ -21,13 +21,24 @@ QtPlayer::QtPlayer(QWidget *parent)
 {
     ui.setupUi(this);
 
-    auto player = new VlcMediaPlayer(ui.videoWidget);
-    player->Open("test.hevc");
-
-    //player->Open("test.mp4");
+    auto player1 = new VlcMediaPlayer(ui.videoWidget1);
+    player1->Open("test.mp4");
 
     //auto player2 = new VlcMediaPlayer(ui.videoWidget2);
-    //player2->Open("test.hevc");
+    //player2->Open("test.mp4");
+
+    //auto player3 = new VlcMediaPlayer(ui.videoWidget3);
+    //player3->Open("test.mp4");
+
+
+    //auto player4 = new VlcMediaPlayer(ui.videoWidget4);
+    //player4->Open("test.mp4");
+
+    //auto player5 = new VlcMediaPlayer(ui.videoWidget5);
+    //player5->Open("test.mp4");
+
+    //auto player6 = new VlcMediaPlayer(ui.videoWidget6);
+    //player6->Open("test.mp4");
 
     //Sleep(1000);
     //player->Pause();

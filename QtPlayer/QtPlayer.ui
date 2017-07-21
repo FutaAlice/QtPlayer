@@ -13,23 +13,93 @@
   <property name="windowTitle">
    <string>QtPlayer</string>
   </property>
-  <widget class="QOpenGLWidget" name="videoWidget">
+  <widget class="QWidget" name="videoWidget1" native="true">
    <property name="geometry">
     <rect>
-     <x>-10</x>
+     <x>0</x>
      <y>0</y>
-     <width>300</width>
-     <height>200</height>
+     <width>160</width>
+     <height>100</height>
     </rect>
    </property>
   </widget>
-  <widget class="QOpenGLWidget" name="videoWidget2">
+  <widget class="QWidget" name="videoWidget2" native="true">
    <property name="geometry">
     <rect>
-     <x>300</x>
+     <x>160</x>
+     <y>0</y>
+     <width>160</width>
+     <height>100</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QWidget" name="videoWidget3" native="true">
+   <property name="geometry">
+    <rect>
+     <x>320</x>
+     <y>0</y>
+     <width>160</width>
+     <height>100</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QWidget" name="videoWidget4" native="true">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>100</y>
+     <width>160</width>
+     <height>100</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QWidget" name="videoWidget5" native="true">
+   <property name="geometry">
+    <rect>
+     <x>160</x>
+     <y>100</y>
+     <width>160</width>
+     <height>100</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QWidget" name="videoWidget6" native="true">
+   <property name="geometry">
+    <rect>
+     <x>320</x>
+     <y>100</y>
+     <width>160</width>
+     <height>100</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QWidget" name="videoWidget7" native="true">
+   <property name="geometry">
+    <rect>
+     <x>160</x>
      <y>200</y>
-     <width>300</width>
-     <height>200</height>
+     <width>160</width>
+     <height>100</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QWidget" name="videoWidget8" native="true">
+   <property name="geometry">
+    <rect>
+     <x>320</x>
+     <y>200</y>
+     <width>160</width>
+     <height>100</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QWidget" name="videoWidget9" native="true">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>200</y>
+     <width>160</width>
+     <height>100</height>
     </rect>
    </property>
   </widget>
