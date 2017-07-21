@@ -24,15 +24,14 @@ QtPlayer::QtPlayer(QWidget *parent)
     auto player1 = new VlcMediaPlayer(ui.videoWidget1);
     player1->Open("test.mp4");
 
-    //auto player2 = new VlcMediaPlayer(ui.videoWidget2);
-    //player2->Open("test.mp4");
+    auto player2 = new VlcMediaPlayer(ui.videoWidget2);
+    player2->Open("test.mp4");
 
-    //auto player3 = new VlcMediaPlayer(ui.videoWidget3);
-    //player3->Open("test.mp4");
+    auto player3 = new VlcMediaPlayer(ui.videoWidget3);
+    player3->Open("test.mp4");
 
-
-    //auto player4 = new VlcMediaPlayer(ui.videoWidget4);
-    //player4->Open("test.mp4");
+    auto player4 = new VlcMediaPlayer(ui.videoWidget4);
+    player4->Open("test.mp4");
 
     //auto player5 = new VlcMediaPlayer(ui.videoWidget5);
     //player5->Open("test.mp4");

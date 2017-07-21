@@ -2,7 +2,7 @@
  * vlc_picture.h: picture definitions
  *****************************************************************************
  * Copyright (C) 1999 - 2009 VLC authors and VideoLAN
- * $Id: d3e3b99c1f8f5ad6c6b4ca63a1c80ba8357889d0 $
+ * $Id: e45374ba04791df4b80ebda3987d4897757b5663 $
  *
  * Authors: Vincent Seguin <seguin@via.ecp.fr>
  *          Samuel Hocevar <sam@via.ecp.fr>
@@ -32,7 +32,9 @@
  */
 
 #include <vlc_es.h>
-#include <vlc_atomic.h>
+#if (defined (__LIBVLC__) && !defined (__PLUGIN__))
+# include <vlc_atomic.h>
+#endif
 
 /** Description of a planar graphic field */
 typedef struct plane_t
@@ -102,7 +104,11 @@ struct picture_t
     /** This way the picture_Release can be overloaded */
     struct
     {
+#if (defined (__LIBVLC__) && !defined (__PLUGIN__))
         atomic_uintptr_t refcount;
+#else
+        uintptr_t refcount_placeholder_keep_off;
+#endif
         void (*pf_destroy)( picture_t * );
         picture_gc_sys_t *p_sys;
     } gc;

@@ -2,7 +2,7 @@
  * vlc_access.h: Access descriptor, queries and methods
  *****************************************************************************
  * Copyright (C) 1999-2006 VLC authors and VideoLAN
- * $Id: 8a8f1faf3129f14022903542668725e6ec5b5394 $
+ * $Id: 511278add942a4ff59cc658431901236dd48e341 $
  *
  * Authors: Laurent Aimar <fenrir@via.ecp.fr>
  *
@@ -162,7 +162,7 @@ VLC_API input_thread_t * access_GetParentInput( access_t *p_access ) VLC_USED;
     do { \
         access_InitFields( p_access ); \
         ACCESS_SET_CALLBACKS( Read, NULL, Control, Seek ); \
-        p_sys = p_access->p_sys = calloc( 1, sizeof( access_sys_t ) ); \
+        p_sys = p_access->p_sys = (access_sys_t*)calloc( 1, sizeof( access_sys_t ) ); \
         if( !p_sys ) return VLC_ENOMEM;\
     } while(0);
 
@@ -170,7 +170,7 @@ VLC_API input_thread_t * access_GetParentInput( access_t *p_access ) VLC_USED;
     do { \
         access_InitFields( p_access ); \
         ACCESS_SET_CALLBACKS( NULL, Block, Control, Seek ); \
-        p_sys = p_access->p_sys = calloc( 1, sizeof( access_sys_t ) ); \
+        p_sys = p_access->p_sys = (access_sys_t*)calloc( 1, sizeof( access_sys_t ) ); \
         if( !p_sys ) return VLC_ENOMEM; \
     } while(0);
 

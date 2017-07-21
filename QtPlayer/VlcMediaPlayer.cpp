@@ -66,7 +66,7 @@ bool VlcMediaPlayer::Open(const char *url)
     }
 
     /*::avformat-format=hevc*/
-    //libvlc_media_add_option(vlcMedia, ":avcodec-options{flags=low_delay}");
+    libvlc_media_add_option(vlcMedia, ":avcodec-options{flags=low_delay}");
     libvlc_media_add_option(vlcMedia, ":demux=hevc");
     //libvlc_media_add_option(vlcMedia, ":sout-ts-dts-delay=0");
     
