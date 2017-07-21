@@ -62,9 +62,11 @@ bool VlcMediaPlayer::Open(const char *url)
         return false;
     }
 
+    if (QString(url).endsWith(".hevc"))
+        libvlc_media_add_option(vlcMedia, ":demux=hevc");
+
     /*::avformat-format=hevc*/
-    libvlc_media_add_option(vlcMedia, ":avcodec-options{flags=low_delay}");
-    libvlc_media_add_option(vlcMedia, ":demux=hevc");
+    //libvlc_media_add_option(vlcMedia, ":avcodec-options{flags=low_delay}");
     //libvlc_media_add_option(vlcMedia, ":sout-ts-dts-delay=0");
     
     /* Create a new libvlc player */
@@ -73,11 +75,10 @@ bool VlcMediaPlayer::Open(const char *url)
     /* Release the media */
     libvlc_media_release(vlcMedia);
 
-    Play();
-    return true;
+    return Play();
 }
 
-void VlcMediaPlayer::Play()
+bool VlcMediaPlayer::Play()
 {
     /* Integrate the video in the interface */
 #if defined(Q_OS_MAC)
@@ -89,7 +90,11 @@ void VlcMediaPlayer::Play()
 #endif
 
     /* And start playback */
-    libvlc_media_player_play(m_pVlcPlayer);
+    int vlc_ret = libvlc_media_player_play(m_pVlcPlayer);
+    if (0 == vlc_ret)
+        return true;
+    else
+        return false;
 }
 
 void VlcMediaPlayer::Pause()

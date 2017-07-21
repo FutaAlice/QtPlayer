@@ -34,7 +34,7 @@ public:
 
     // Control
     virtual bool Open(const char* url);
-    virtual void Play();
+    virtual bool Play();
     virtual void Pause();
     virtual void Stop();
     virtual void ChangeVolume(int vol) ;

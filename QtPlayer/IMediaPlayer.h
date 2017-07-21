@@ -22,7 +22,7 @@ public:
     virtual bool OpenURL(const char* url);
 
     virtual bool Open(const char* url) = 0;
-    virtual void Play() = 0;
+    virtual bool Play() = 0;
     virtual void Pause() = 0;
     virtual void Stop() = 0;
     virtual void ChangeVolume(int vol) = 0;
