@@ -10,13 +10,13 @@ extern "C" {
 }
 # endif
 
-#ifdef WIN32    // Windows
-#pragma comment(lib, "libvlc.lib")
-#else           // Linux
+#if defined(Q_OS_MAC)       // Mac
+// TODO
+#elif defined(Q_OS_UNIX)    // Linux
 #pragma comment(lib, "libvlc.a")
+#elif defined(Q_OS_WIN)     // Windows
+#pragma comment(lib, "libvlc.lib")
 #endif
-
-
 
 unsigned int VlcMediaPlayer::s_ref = 0;
 libvlc_instance_t *VlcMediaPlayer::s_pVlcInstance = NULL;
@@ -26,7 +26,7 @@ VlcMediaPlayer::VlcMediaPlayer(QWidget* pWidget)
     , m_pVlcPlayer(NULL)
 {
     /* Initialize libVLC */
-    if (0 == s_ref)
+    if (0 == s_ref++)
     {
         s_pVlcInstance = libvlc_new(0, NULL);
         if (NULL == s_pVlcInstance)
@@ -34,14 +34,12 @@ VlcMediaPlayer::VlcMediaPlayer(QWidget* pWidget)
             assert(false);
         }
     }
-    ++s_ref;
 }
 
 
 VlcMediaPlayer::~VlcMediaPlayer()
 {
-    --s_ref;
-    if (0 == s_ref)
+    if (0 == --s_ref)
     {
         libvlc_release(s_pVlcInstance);
     }
@@ -50,16 +48,15 @@ VlcMediaPlayer::~VlcMediaPlayer()
 bool VlcMediaPlayer::Open(const char *url)
 {
     /* Stop if something is playing */
-    if (m_pVlcPlayer &&
-        libvlc_media_player_is_playing(m_pVlcPlayer))
-    {
-        Stop();
-    }
+    //if (m_pVlcPlayer && libvlc_media_player_is_playing(m_pVlcPlayer))
+    //{
+    //    Stop();
+    //}
+    Stop();
 
     /* Create a new Media */
-    libvlc_media_t *vlcMedia = libvlc_media_new_path(s_pVlcInstance,
-                                                     url);
-    /* Fail to open */
+    libvlc_media_t *vlcMedia = libvlc_media_new_path(s_pVlcInstance, url);
+    /* Fail to open url*/
     if (!vlcMedia)
     {
         return false;
@@ -97,8 +94,7 @@ void VlcMediaPlayer::Play()
 
 void VlcMediaPlayer::Pause()
 {
-    if (m_pVlcPlayer &&
-        libvlc_media_player_is_playing(m_pVlcPlayer))
+    if (m_pVlcPlayer && libvlc_media_player_is_playing(m_pVlcPlayer))
     {
         libvlc_media_player_pause(m_pVlcPlayer);
     }

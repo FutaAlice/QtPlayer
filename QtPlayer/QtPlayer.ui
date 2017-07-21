@@ -6,98 +6,18 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>600</width>
-    <height>400</height>
+    <width>640</width>
+    <height>480</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>QtPlayer</string>
   </property>
-  <widget class="QOpenGLWidget" name="videoWidget1" native="true">
+  <widget class="QOpenGLWidget" name="videoWidget1">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>160</width>
-     <height>100</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QOpenGLWidget" name="videoWidget2" native="true">
-   <property name="geometry">
-    <rect>
-     <x>160</x>
-     <y>0</y>
-     <width>160</width>
-     <height>100</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QOpenGLWidget" name="videoWidget3" native="true">
-   <property name="geometry">
-    <rect>
-     <x>320</x>
-     <y>0</y>
-     <width>160</width>
-     <height>100</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QOpenGLWidget" name="videoWidget4" native="true">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>100</y>
-     <width>160</width>
-     <height>100</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QOpenGLWidget" name="videoWidget5" native="true">
-   <property name="geometry">
-    <rect>
-     <x>160</x>
-     <y>100</y>
-     <width>160</width>
-     <height>100</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QOpenGLWidget" name="videoWidget6" native="true">
-   <property name="geometry">
-    <rect>
-     <x>320</x>
-     <y>100</y>
-     <width>160</width>
-     <height>100</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QOpenGLWidget" name="videoWidget7" native="true">
-   <property name="geometry">
-    <rect>
-     <x>160</x>
-     <y>200</y>
-     <width>160</width>
-     <height>100</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QOpenGLWidget" name="videoWidget8" native="true">
-   <property name="geometry">
-    <rect>
-     <x>320</x>
-     <y>200</y>
-     <width>160</width>
-     <height>100</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QOpenGLWidget" name="videoWidget9" native="true">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>200</y>
      <width>160</width>
      <height>100</height>
     </rect>
