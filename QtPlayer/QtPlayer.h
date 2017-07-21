@@ -10,6 +10,10 @@ class QtPlayer : public QWidget
 public:
     QtPlayer(QWidget *parent = Q_NULLPTR);
 
+private slots:
+    void openFile();
+    void openURL();
+
 private:
     Ui::QtPlayerClass ui;
     QWidget* m_pSubWidgets[16];

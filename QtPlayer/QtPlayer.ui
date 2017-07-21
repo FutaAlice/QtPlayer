@@ -7,16 +7,94 @@
     <x>0</x>
     <y>0</y>
     <width>640</width>
-    <height>480</height>
+    <height>504</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>QtPlayer</string>
   </property>
+  <widget class="QLineEdit" name="lineEdit">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>480</y>
+     <width>461</width>
+     <height>23</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btnOpenURL">
+   <property name="geometry">
+    <rect>
+     <x>550</x>
+     <y>480</y>
+     <width>89</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>OpenURL</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btnOpenFile">
+   <property name="geometry">
+    <rect>
+     <x>460</x>
+     <y>480</y>
+     <width>89</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>OpenFile</string>
+   </property>
+  </widget>
+  <zorder>btnOpenFile</zorder>
+  <zorder>btnOpenURL</zorder>
+  <zorder>lineEdit</zorder>
+  <zorder>btnOpenURL</zorder>
+  <zorder>btnOpenFile</zorder>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>
   <include location="QtPlayer.qrc"/>
  </resources>
- <connections/>
+ <connections>
+  <connection>
+   <sender>btnOpenFile</sender>
+   <signal>clicked()</signal>
+   <receiver>QtPlayerClass</receiver>
+   <slot>openFile()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>318</x>
+     <y>494</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>679</x>
+     <y>251</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnOpenURL</sender>
+   <signal>clicked()</signal>
+   <receiver>QtPlayerClass</receiver>
+   <slot>openURL()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>411</x>
+     <y>486</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>664</x>
+     <y>273</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>openFile()</slot>
+  <slot>openURL()</slot>
+ </slots>
 </ui>

@@ -9,20 +9,44 @@ QtPlayer::QtPlayer(QWidget *parent)
 
     memset(m_pSubWidgets, NULL, sizeof(m_pSubWidgets));
 
-    for (auto i : m_pSubWidgets)
-    {
-        if (NULL == i)
-        {
-            i = new QWidget(this);
-            auto player1 = new VlcMediaPlayer(i);
-            player1->Open("test.mp4");
-            i->resize(QSize(160, 100));
-            i->move(QPoint(160, 100));
-            break;
-        }
-    }
 
     //Sleep(1000);
     //player->Pause();
 
+}
+
+void QtPlayer::openFile()
+{
+    int w = width() / 4, h = height() / 4;
+    for (int i = 0; i < 16; ++i)
+    {
+        if (m_pSubWidgets[i] == NULL)
+        {
+            m_pSubWidgets[i] = new QWidget(this);
+            auto player1 = new VlcMediaPlayer(m_pSubWidgets[i]);
+            m_pSubWidgets[i]->resize(QSize(w, h));
+            m_pSubWidgets[i]->move(QPoint((i % 4) * w, (i / 4) * h));
+            m_pSubWidgets[i]->show();
+            player1->OpenFile();
+            break;
+        }
+    }
+}
+
+void QtPlayer::openURL()
+{
+    int w = width() / 4, h = height() / 4;
+    for (int i = 0; i < 16; ++i)
+    {
+        if (m_pSubWidgets[i] == NULL)
+        {
+            m_pSubWidgets[i] = new QWidget(this);
+            auto player1 = new VlcMediaPlayer(m_pSubWidgets[i]);
+            m_pSubWidgets[i]->resize(QSize(w, h));
+            m_pSubWidgets[i]->move(QPoint((i % 4) * w, (i / 4) * h));
+            m_pSubWidgets[i]->show();
+            player1->OpenURL(ui.lineEdit->text().toUtf8().constData());
+            break;
+        }
+    }
 }
