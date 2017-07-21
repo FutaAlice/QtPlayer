@@ -44,7 +44,7 @@ private:
     libvlc_media_player_t *m_pVlcPlayer;
 
 private:
-    // libvlc实例，所以窗体的渲染共用一个
+    // libvlc实例，所有窗体的渲染共用一个
     static libvlc_instance_t *s_pVlcInstance;
     static unsigned int s_ref;
 };

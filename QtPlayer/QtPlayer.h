@@ -12,4 +12,5 @@ public:
 
 private:
     Ui::QtPlayerClass ui;
+    QWidget* m_pSubWidgets[16];
 };
