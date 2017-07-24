@@ -54,8 +54,21 @@ bool VlcMediaPlayer::Open(const char *url)
     //}
     Stop();
 
+    auto funcOpen = libvlc_media_new_path;
+    if (QString(url).startsWith("rtsp://") ||
+        QString(url).startsWith("rtmp://") ||
+        QString(url).startsWith("rtp://") ||
+        QString(url).startsWith("tcp://") ||
+        QString(url).startsWith("udp://") ||
+        QString(url).startsWith("ftp://") ||
+        QString(url).startsWith("http://") ||
+        QString(url).startsWith("https://"))
+    {
+        funcOpen = libvlc_media_new_location;
+    }
+
     /* Create a new Media */
-    libvlc_media_t *vlcMedia = libvlc_media_new_path(s_pVlcInstance, url);
+    libvlc_media_t *vlcMedia = funcOpen(s_pVlcInstance, url);
     /* Fail to open url*/
     if (!vlcMedia)
     {
@@ -64,6 +77,8 @@ bool VlcMediaPlayer::Open(const char *url)
 
     if (QString(url).endsWith(".hevc"))
         libvlc_media_add_option(vlcMedia, ":demux=hevc");
+    //else if (QString(url).endsWith("rtsp"))
+    //    libvlc_media_add_option(vlcMedia, "--rtsp-tcp");
 
     /*::avformat-format=hevc*/
     //libvlc_media_add_option(vlcMedia, ":avcodec-options{flags=low_delay}");
