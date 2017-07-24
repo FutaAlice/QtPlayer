@@ -77,8 +77,8 @@ bool VlcMediaPlayer::Open(const char *url)
 
     if (QString(url).endsWith(".hevc"))
         libvlc_media_add_option(vlcMedia, ":demux=hevc");
-    //else if (QString(url).endsWith("rtsp"))
-    //    libvlc_media_add_option(vlcMedia, "--rtsp-tcp");
+    else if (QString(url).endsWith("rtsp"))
+        libvlc_media_add_option(vlcMedia, ":rtsp-tcp");
 
     /*::avformat-format=hevc*/
     //libvlc_media_add_option(vlcMedia, ":avcodec-options{flags=low_delay}");
