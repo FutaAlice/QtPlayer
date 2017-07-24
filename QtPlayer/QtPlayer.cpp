@@ -12,7 +12,7 @@ QtPlayer::QtPlayer(QWidget *parent)
 
 void QtPlayer::openFile()
 {
-    int w = width() / 4, h = height() / 4;
+    int w = width() / 4, h = (height() - 24) / 4;
     for (int i = 0; i < 16; ++i)
     {
         if (m_pSubWidgets[i] == NULL)
@@ -23,8 +23,7 @@ void QtPlayer::openFile()
             // 打开成功
             if (player->OpenFile())
             {
-                m_pSubWidgets[i]->resize(QSize(w, h));
-                m_pSubWidgets[i]->move(QPoint((i % 4) * w, (i / 4) * h));
+                resizeEvent(NULL);
                 m_pSubWidgets[i]->show();
             }
             else
@@ -40,7 +39,7 @@ void QtPlayer::openFile()
 
 void QtPlayer::resizeEvent(QResizeEvent *e)
 {
-    int w = width() / 4, h = height() / 4;
+    int w = width() / 4, h = (height() - 24) / 4;
     for (int i = 0; i < 16; ++i)
     {
         if (NULL == m_pSubWidgets[i])
@@ -48,6 +47,17 @@ void QtPlayer::resizeEvent(QResizeEvent *e)
         m_pSubWidgets[i]->resize(QSize(w, h));
         m_pSubWidgets[i]->move(QPoint((i % 4) * w, (i / 4) * h));
     }
+    QPoint pos = ui.btnOpenFile->pos();
+    pos.setY(height() - 24);
+    ui.btnOpenFile->move(pos);
+
+    pos = ui.btnOpenURL->pos();
+    pos.setY(height() - 24);
+    ui.btnOpenURL->move(pos);
+
+    pos = ui.lineEdit->pos();
+    pos.setY(height() - 24);
+    ui.lineEdit->move(pos);
 }
 
 void QtPlayer::openURL()
@@ -62,8 +72,7 @@ void QtPlayer::openURL()
             // 打开成功
             if (player->OpenURL(ui.lineEdit->text().toUtf8().constData()))
             {
-                m_pSubWidgets[i]->resize(QSize(w, h));
-                m_pSubWidgets[i]->move(QPoint((i % 4) * w, (i / 4) * h));
+                resizeEvent(NULL);
                 m_pSubWidgets[i]->show();
             }
             else

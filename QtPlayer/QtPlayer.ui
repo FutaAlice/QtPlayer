@@ -49,11 +49,6 @@
     <string>OpenFile</string>
    </property>
   </widget>
-  <zorder>btnOpenFile</zorder>
-  <zorder>btnOpenURL</zorder>
-  <zorder>lineEdit</zorder>
-  <zorder>btnOpenURL</zorder>
-  <zorder>btnOpenFile</zorder>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>
