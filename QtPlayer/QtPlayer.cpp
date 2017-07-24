@@ -38,6 +38,18 @@ void QtPlayer::openFile()
     }
 }
 
+void QtPlayer::resizeEvent(QResizeEvent *e)
+{
+    int w = width() / 4, h = height() / 4;
+    for (int i = 0; i < 16; ++i)
+    {
+        if (NULL == m_pSubWidgets[i])
+            continue;
+        m_pSubWidgets[i]->resize(QSize(w, h));
+        m_pSubWidgets[i]->move(QPoint((i % 4) * w, (i / 4) * h));
+    }
+}
+
 void QtPlayer::openURL()
 {
     int w = width() / 4, h = height() / 4;

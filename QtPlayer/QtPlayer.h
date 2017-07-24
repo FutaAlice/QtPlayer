@@ -9,6 +9,7 @@ class QtPlayer : public QWidget
     Q_OBJECT
 public:
     QtPlayer(QWidget *parent = Q_NULLPTR);
+    void resizeEvent(QResizeEvent* e);
 
 private slots:
     void openFile();
