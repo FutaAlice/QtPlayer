@@ -1,0 +1,10 @@
+Debug
+Release
+x64
+*.vc.db
+*.suo
+*.pdb
+*.mp4
+*.hevc
+QtPlayer.exe
+QtPlayer.ilk
